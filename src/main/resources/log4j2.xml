@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
+    <Appenders>
+        <File name="MyFile" fileName="latest.log">
+            <PatternLayout>
+                <Pattern>(%d{dd.MM.yyyy HH:mm:ss}) [Bot] [%p] | %m%n</Pattern>
+            </PatternLayout>
+        </File>
+        <File name="Log" fileName="logs/${date:dd_MM_yyyy-HH_mm}.log">
+            <PatternLayout>
+                <Pattern>(%d{dd.MM.yyyy HH:mm:ss}) [Bot] [%p] | %m%n</Pattern>
+            </PatternLayout>
+        </File>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="(%d{HH:mm:ss}) [Bot] [%p] | %m%n"/>
+        </Console>
+        <Async name="Async">
+            <AppenderRef ref="MyFile"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Root level="error">
+            <AppenderRef ref="Async"/>
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+        <Root level="ALL">
+            <AppenderRef ref="Log"/>
+        </Root>
+    </Loggers>
+</Configuration>
