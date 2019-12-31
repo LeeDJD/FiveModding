@@ -1,0 +1,9 @@
+{
+  "bot": {"token": "NjYxNDE2MDk3OTI0MzgyNzQ2.XgrFyA.TDIdLWARdnawZ8hO5hlv0nCRQVU"},
+  "shardmanager": {
+    "port": 1024,
+    "name": "Gerda",
+    "host": "127.0.0.1",
+    "secret": "AuthSecret"
+  }
+}

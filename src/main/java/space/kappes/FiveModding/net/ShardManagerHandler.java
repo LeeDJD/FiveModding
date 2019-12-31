@@ -2,7 +2,10 @@ package space.kappes.FiveModding.net;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.JSONObject;
 import space.kappes.FiveModding.FiveBot;
+import space.kappes.FiveModding.event.impl.shardmanager.ShardManagerConnectedEvent;
+import space.kappes.FiveModding.event.impl.shardmanager.ShardManagerDisconnectedEvent;
 import space.kappes.FiveModding.event.impl.shardmanager.ShardManagerMessageReceivedEvent;
 
 import java.io.IOException;
@@ -21,7 +24,7 @@ public class ShardManagerHandler implements Runnable {
     private long ping = 0L;
 
     public ShardManagerHandler() throws IOException {
-        this.client = new Socket();
+        this.client = new Socket(FiveBot.getInstance().getConfigManager().getHost(), FiveBot.getInstance().getConfigManager().getPort());
         this.inputScanner = new Scanner(client.getInputStream());
         this.outputWriter = new PrintWriter(client.getOutputStream());
         this.readThread = new Thread(this, "ReadingThread");
@@ -30,6 +33,7 @@ public class ShardManagerHandler implements Runnable {
 
     @Override
     public void run() {
+        FiveBot.getInstance().getEventManager().call(new ShardManagerConnectedEvent());
         while (client.isConnected() && !client.isClosed() && !client.isInputShutdown() && !client.isOutputShutdown()) {
             try {
                 if (inputScanner.hasNextLine())
@@ -46,6 +50,14 @@ public class ShardManagerHandler implements Runnable {
         }
     }
 
+    public void sendCommand(String invoke, JSONObject args) {
+        if (client.isConnected() && !client.isClosed()) {
+            outputWriter.println(String.format("%s %s", invoke, args.toString()));
+            outputWriter.flush();
+        }
+    }
+
+
     public void close(String reason) throws IOException {
         if (alreadyClosed)
             return;
@@ -54,7 +66,7 @@ public class ShardManagerHandler implements Runnable {
         outputWriter.close();
         client.close();
         logger.debug(String.format("[ShardManagerHandler] Shutting down with reason %s", reason));
-        //TODO: Fire event
+        FiveBot.getInstance().getEventManager().call(new ShardManagerDisconnectedEvent(reason));
     }
 
     public void close() throws IOException {

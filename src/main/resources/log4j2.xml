@@ -12,18 +12,16 @@
             </PatternLayout>
         </File>
         <Console name="STDOUT" target="SYSTEM_OUT">
-            <PatternLayout pattern="(%d{HH:mm:ss}) [Bot] [%p] | %m%n"/>
+            <PatternLayout pattern="%d %-5p method: [%t] %C{2} (%F:%L) - %m%n"/>
         </Console>
         <Async name="Async">
             <AppenderRef ref="MyFile"/>
         </Async>
     </Appenders>
     <Loggers>
-        <Root level="error">
+        <Root level="info">
             <AppenderRef ref="Async"/>
             <AppenderRef ref="STDOUT"/>
-        </Root>
-        <Root level="ALL">
             <AppenderRef ref="Log"/>
         </Root>
     </Loggers>
