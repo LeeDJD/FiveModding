@@ -1,4 +1,4 @@
-package space.kappes.FiveModding.commands;
+package space.kappes.FiveModding.commands.utility;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import space.kappes.FiveModding.FiveBot;
