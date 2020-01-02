@@ -86,7 +86,7 @@ public class CommandManager extends ListenerAdapter {
         if (event.getMember().hasPermission(event.getExecutionEvent().getTextChannel(), Permission.MESSAGE_WRITE))
             message = SafeMessage.sendMessageBlocking(event.getTextChannel(), message);
         if (event.getMember().hasPermission(event.getExecutionEvent().getTextChannel(), Permission.MESSAGE_MANAGE))
-            message.delete().queueAfter(30, TimeUnit.SECONDS);
+            message.delete().queueAfter(60, TimeUnit.SECONDS);
     }
 
     public void registerCommand (Command command){

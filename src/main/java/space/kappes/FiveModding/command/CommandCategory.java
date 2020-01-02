@@ -4,8 +4,10 @@ public enum  CommandCategory {
 
     UNKNOWN(0, "Unknown"),
     SIMPLE(1, "Simple Responses"),
-    BOT_OWNER(2, "BotOwner"),
-    UTILITY(3, "Utility");
+    FIVEM(2, "FiveM Responses"),
+    INSTALL(3, "Installation Responses"),
+    BOT_OWNER(4, "BotOwner"),
+    UTILITY(5, "Utility");
 
 
     private long id;

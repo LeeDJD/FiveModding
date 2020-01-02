@@ -8,7 +8,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import space.kappes.FiveModding.FiveBot;
 import space.kappes.FiveModding.command.CommandManager;
-import space.kappes.FiveModding.commands.CommandHelp;
+import space.kappes.FiveModding.commands.install.CommandCodewalker;
+import space.kappes.FiveModding.commands.install.CommandGIMS;
+import space.kappes.FiveModding.commands.simple.CommandInterior;
+import space.kappes.FiveModding.commands.utility.CommandHelp;
+import space.kappes.FiveModding.commands.utility.CommandInfo;
+import space.kappes.FiveModding.commands.utility.CommandSources;
 
 import javax.security.auth.login.LoginException;
 import java.util.Arrays;
@@ -32,6 +37,11 @@ public class JDABot {
 
     private void registerCommands() {
         commandManager.registerCommand(new CommandHelp());
+        commandManager.registerCommand(new CommandInfo());
+        commandManager.registerCommand(new CommandGIMS());
+        commandManager.registerCommand(new CommandCodewalker());
+        commandManager.registerCommand(new CommandInterior());
+        commandManager.registerCommand(new CommandSources());
     }
 
     public void connect(int totalShards, Integer[] shardIds) throws LoginException {
