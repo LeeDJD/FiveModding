@@ -173,3 +173,6 @@ gradle-app.setting
 **/build/
 
 # End of https://www.gitignore.io/api/git,java,gradle,windows,intellij+all
+config.json
+latest.log
+logs/*
