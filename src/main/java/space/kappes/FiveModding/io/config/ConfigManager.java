@@ -13,13 +13,13 @@ public class ConfigManager {
 
     private void setDefaults() {
         JSONObject botProperty = new JSONObject();
-        botProperty.put("token", "DiscordToken");
+        botProperty.put("token", System.getenv("SHARD_TOKEN") == null ? "DiscordToken" : System.getenv("SHARD_TOKEN"));
         config.setDefault("bot", botProperty);
         JSONObject shardManagerProperty = new JSONObject();
-        shardManagerProperty.put("secret", "AuthSecret");
-        shardManagerProperty.put("name", "Gerda");
-        shardManagerProperty.put("host", "http://localhost");
-        shardManagerProperty.put("port", 1024);
+        shardManagerProperty.put("secret", System.getenv("SHARDMANAGER_SECRET") == null ? "AuthSecret" : System.getenv("SHARDMANAGER_SECRET"));
+        shardManagerProperty.put("name", System.getenv("SHARD_NAME") == null ? "Gerda" : System.getenv("SHARD_NAME"));
+        shardManagerProperty.put("host", System.getenv("SHARDMANAGER_HOST") == null ? "http://localhost" : System.getenv("SHARDMANAGER_HOST"));
+        shardManagerProperty.put("port", System.getenv("SHARDMANAGER_PORT") == null ? 1024 : Integer.getInteger(System.getenv("SHARDMANAGER_PORT")));
         config.setDefault("shardmanager", shardManagerProperty);
     }
 

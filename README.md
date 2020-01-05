@@ -10,5 +10,10 @@
 Invite the bot directly from [here](https://discordapp.com/api/oauth2/authorize?client_id=661416097924382746&permissions=388160&scope=bot).
 Start by typing fv!help and get a list of all commands!
 
+## Examples
+
+Don't want to answer always the same when someone asks something about ymaps? This bot has you covered!
+<div><img src="https://i.imgur.com/mtCNLAM.png" /></div>
+
 ---
 Copyright 2019 Leon Kappes/Lee

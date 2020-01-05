@@ -11,6 +11,7 @@ import space.kappes.FiveModding.command.CommandManager;
 import space.kappes.FiveModding.commands.install.CommandCodewalker;
 import space.kappes.FiveModding.commands.install.CommandGIMS;
 import space.kappes.FiveModding.commands.simple.CommandInterior;
+import space.kappes.FiveModding.commands.simple.CommandYMAP;
 import space.kappes.FiveModding.commands.utility.CommandHelp;
 import space.kappes.FiveModding.commands.utility.CommandInfo;
 import space.kappes.FiveModding.commands.utility.CommandSources;
@@ -42,6 +43,7 @@ public class JDABot {
         commandManager.registerCommand(new CommandCodewalker());
         commandManager.registerCommand(new CommandInterior());
         commandManager.registerCommand(new CommandSources());
+        commandManager.registerCommand(new CommandYMAP());
     }
 
     public void connect(int totalShards, Integer[] shardIds) throws LoginException {
