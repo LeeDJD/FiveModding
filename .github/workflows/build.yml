@@ -24,7 +24,7 @@ jobs:
         DOCKER_PASSWD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWD
-        docker build -t ${IMAGE} . -f shard/Dockerfile
+        docker build -t ${IMAGE} . -f Dockerfile
         docker tag ${IMAGE} ${IMAGE}:${GITHUB_SHA::8}
         docker push ${IMAGE}
     - name: Tag Image Master
